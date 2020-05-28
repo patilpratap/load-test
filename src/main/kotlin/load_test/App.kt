@@ -1,7 +1,9 @@
 package load_test
 
+import load_test.api.fileDownload
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
 
 class App {
 
@@ -11,9 +13,11 @@ class App {
 
     fun run() {
         logger.debug("Load test Started")
-    }
 
+        fileDownload(100)
+    }
 }
+
 
 fun main(args: Array<String>) {
     App().run()

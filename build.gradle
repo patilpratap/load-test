@@ -14,6 +14,13 @@ ext {
     log4jVersion = '2.13.3'
 }
 
+jar {
+    manifest {
+        attributes('Main-Class': 'load_test.AppKt')
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -22,6 +29,8 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
     implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     implementation "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+    implementation "commons-io:commons-io:2.6"
+    implementation "commons-codec:commons-codec:1.14"
 
     testImplementation "junit:junit:4.12"
     testImplementation "com.squareup.okhttp3:mockwebserver:4.7.2"
